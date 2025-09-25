@@ -8,10 +8,11 @@ export class DatabaseService implements OnModuleInit {
 
   constructor(private readonly configService: ConfigService) {
     this.pool = mysql.createPool({
-      host: this.configService.get<string>('database.DATABASE_HOST'),
-      user: this.configService.get<string>('database.DATABASE_USER'),
-      password: this.configService.get<string>('database.DATABASE_PASSWORD'),
-      database: this.configService.get<string>('database.DATABASE_NAME'),
+      host: this.configService.get<string>('database.databaseHost'),
+      user: this.configService.get<string>('database.databaseUser'),
+      password: this.configService.get<string>('database.databasePassword'),
+      database: this.configService.get<string>('database.databaseName'),
+      port: this.configService.get<number>('database.databasePort'),
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0,

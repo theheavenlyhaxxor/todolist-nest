@@ -10,11 +10,7 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-  try {
-    await app.listen(process.env.PORT as string | number);
-    console.log(`Server is Running on port ${process.env.PORT as string}`);
-  } catch (error) {
-    throw new Error(`Failed to start server ${error.message}`);
-  }
+  await app.listen(process.env.PORT as string | number);
+  console.log(`Server is Running on port ${process.env.PORT as string}`);
 }
 bootstrap();
