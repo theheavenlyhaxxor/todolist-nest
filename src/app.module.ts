@@ -5,6 +5,7 @@ import config from './config/config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { DatabaseModule } from './database/database.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { DatabaseModule } from './database/database.module';
     DatabaseModule,
     AuthModule,
     TaskModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
