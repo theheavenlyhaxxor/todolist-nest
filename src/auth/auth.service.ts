@@ -78,5 +78,47 @@ export class AuthService {
     return { accessToken, refreshToken };
   }
 
-  async refreshToken(refreshTokenDto: RefreshTokenDto) {}
+  async refreshToken(refreshTokenDto: RefreshTokenDto) {
+    const { userId, refreshToken } = refreshTokenDto;
+    const [rows] = (await this.db
+      .getPool()
+      .execute('SELECT * FROM users WHERE id = ? ', [userId])) as any[];
+
+    if (rows.length === 0) {
+      throw new BadRequestException('Invalid User');
+    }
+
+    const user = rows[0];
+
+    if (!user.refreshToken) {
+      throw new BadRequestException('Invalid Request');
+    }
+
+    const isRtMatched = await bcrypt.compare(refreshToken, user.refreshToken);
+    console.log(refreshToken);
+    console.log(user.refreshToken);
+    if (!isRtMatched) {
+      throw new BadRequestException('Invalid Refresh Token');
+    }
+
+    const payload = { sub: user.id, username: user.username };
+    const accessToken = this.jwtService.sign(payload, {
+      secret: this.config.get<string>('jwt.secret'),
+      expiresIn: this.config.get<string>('jwt.expiresIn'),
+    });
+
+    const newRefreshToken = this.jwtService.sign(payload, {
+      secret: this.config.get('jwt.refreshSecret'),
+      expiresIn: this.config.get('jwt.refreshExpiresIn'),
+    });
+
+    const hashedRT = await bcrypt.hash(refreshToken, 10);
+    await this.db
+      .getPool()
+      .execute('UPDATE users SET refreshToken = ? WHERE id = ?', [
+        hashedRT,
+        user.id,
+      ]);
+    return { accessToken, newRefreshToken };
+  }
 }
