@@ -56,7 +56,7 @@ export class AuthService {
       throw new BadRequestException('Invalid Credentials');
     }
 
-    const payload = { sub: user.id, username: user.username };
+    const payload = { userId: user.id, username: user.username };
 
     const accessToken = this.jwtService.sign(payload, {
       secret: this.config.get<string>('jwt.secret'),
