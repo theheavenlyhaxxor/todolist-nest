@@ -9,7 +9,12 @@
     "overrides": {
       "glob": "^10.3.12",
       "rimraf": "^5.0.5"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "bcrypt",
+      "unrs-resolver"
+    ]
   },
   "scripts": {
     "build": "nest build",
@@ -27,17 +32,22 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.1.6",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.6",
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.1",
+    "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
     "dotenv": "^17.2.2",
     "mysql2": "^3.15.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -82,5 +92,6 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  }
+  },
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
 }
