@@ -78,6 +78,13 @@ export class AuthService {
     return { accessToken, refreshToken };
   }
 
+  async logout(userId: number) {
+    await this.db
+      .getPool()
+      .execute('UPDATE users SET refreshToken = NULL WHERE id = ?', [userId]);
+    return { message: 'Successfully logged out' };
+  }
+
   async refreshToken(refreshTokenDto: RefreshTokenDto) {
     const { userId, refreshToken } = refreshTokenDto;
     const [rows] = (await this.db
