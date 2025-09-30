@@ -1,5 +1,4 @@
 import { IsString, MinLength, Matches, IsNotEmpty } from 'class-validator';
-import { stringify } from 'querystring';
 
 export class UserUpdateDto {
   @IsString()
