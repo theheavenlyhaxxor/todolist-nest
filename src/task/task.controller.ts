@@ -8,6 +8,7 @@ import {
   Param,
   Delete,
   Req,
+  Query,
 } from '@nestjs/common';
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -22,6 +23,11 @@ export class TaskController {
   @Post()
   create(@Body() createTaskDto: CreateTaskDto, @Req() req: any) {
     return this.taskService.create(createTaskDto, req.userId);
+  }
+
+  @Patch(':id/done')
+  updateStatus(@Param('id') id: number) {
+    return this.taskService.updateStatus(id);
   }
 
   @Get()

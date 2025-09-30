@@ -62,6 +62,14 @@ export class TaskService {
     return { message: 'Task updated successfully' };
   }
 
+  async updateStatus(id: number) {
+    const task = await this.db
+      .getPool()
+      .execute('UPDATE todos SET isCompleted = ? WHERE id = ?', [true, id]);
+
+    return { message: 'status updated', task };
+  }
+
   async remove(id: number, userId: number) {
     const query = await this.db
       .getPool()
