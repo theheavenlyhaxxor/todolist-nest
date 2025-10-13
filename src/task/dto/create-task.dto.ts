@@ -1,3 +1,5 @@
+// added a validator for input fields
+
 import { IsString, IsNotEmpty } from 'class-validator';
 
 export class CreateTaskDto {

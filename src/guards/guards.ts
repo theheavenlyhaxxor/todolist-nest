@@ -1,3 +1,6 @@
+// added here a more secure jwt guards, that only the logged in user can only view their tasks
+// edit, update, and delete their tasks, also added a try catch block to prevent from server crashing
+
 import {
   CanActivate,
   ExecutionContext,

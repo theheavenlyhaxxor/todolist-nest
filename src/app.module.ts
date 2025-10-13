@@ -1,3 +1,7 @@
+// added here the config file that has all of the .env keys
+// i made it availble glbally for all of the files that need the key so
+//  they can be easily accessed,
+
 import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { TaskModule } from './task/task.module';
@@ -6,6 +10,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './user/user.module';
+import { PositionModule } from './position/position.module';
 
 @Module({
   imports: [
@@ -28,6 +33,7 @@ import { UserModule } from './user/user.module';
     AuthModule,
     TaskModule,
     UserModule,
+    PositionModule,
   ],
   controllers: [],
   providers: [],

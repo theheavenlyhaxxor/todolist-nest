@@ -1,3 +1,5 @@
+// crud for their todos, i simply write this code by following best practices 
+// i did the coded as sort as possible and to be easily understood without comments
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';

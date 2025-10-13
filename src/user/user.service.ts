@@ -1,3 +1,4 @@
+// keeping the code short and readable, also impmplemented some hashing when updating the user
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { UserUpdateDto } from './dto/user.update.dto';

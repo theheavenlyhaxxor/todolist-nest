@@ -1,3 +1,8 @@
+// you will notice in here that i did not paste my database keys, i take advantage of the 
+// config file and used it here for more secure of my .env keys
+// i also added here my sql SCHEMA so no need to use the workbench when running this from start
+// it automatically create database tables instead of using mysql workbench
+// and also added a try catch when connecting to database to prevent the server from crashing
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import * as mysql from 'mysql2/promise';
 import { ConfigService } from '@nestjs/config';

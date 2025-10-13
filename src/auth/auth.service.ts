@@ -1,3 +1,6 @@
+// here i also write this code on my own, followed the best practices when
+// using vanilla mysql, also added some code for extra security and imported the config 
+// environments and also i made the code for each function as short as possible and easily understandable
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { SignupDto } from './dto/signup.dto';
 import { LoginDto } from './dto/login.dto';

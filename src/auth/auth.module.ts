@@ -1,3 +1,5 @@
+// here i just imported the databasemodule 
+// to use the and connect to the database
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';

@@ -12,7 +12,7 @@
     },
     "onlyBuiltDependencies": [
       "@nestjs/core",
-      "bcrypt",
+      "@scarf/scarf",
       "unrs-resolver"
     ]
   },

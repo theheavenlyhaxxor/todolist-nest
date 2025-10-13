@@ -1,3 +1,7 @@
+// also added here that only logged in users can access their data
+// BUT, ANYONE WHO IS LOGGED CAN CAN DELETE AND UPDATE OTHER USERS,
+// I WILL BE FIXING THIS SOON
+
 import {
   Controller,
   Delete,

@@ -1,3 +1,5 @@
+// a signup dto that only minimum of 4 characters in username
+// and password have different patterns for more security to prevent from hacking
 import { IsString, MinLength, Matches } from 'class-validator';
 
 export class SignupDto {

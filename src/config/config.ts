@@ -1,3 +1,7 @@
+// i also take advantage of this config file, so i just need to call this 
+// when i need some of the keys from .env i just import this file to other module 
+// and now i can easily use the environments, i used this instead of pasting the
+// key in the code itself so that my keys won't be exposed in public
 export default () => ({
   jwt: {
     secret: process.env.JWT_SECRET,

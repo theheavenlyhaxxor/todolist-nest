@@ -1,3 +1,4 @@
+// added here some swagger-ui for endpoint documentation
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
@@ -12,13 +13,12 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('todo')
     .addBearerAuth(
-      // 👈 Add this for JWT
       {
         type: 'http',
         scheme: 'bearer',
         bearerFormat: 'JWT',
       },
-      'access-token', // This is a name/key you will use in decorators
+      'access-token', 
     )
     .build();
 
