@@ -67,7 +67,7 @@ export class DatabaseService implements OnModuleInit {
 
     const createLogsTable = `
       CREATE TABLE IF NOT EXISTS logs (
-        id INT AUTO INCREMENT PRIMARY KEY,
+        id INT AUTO_INCREMENT PRIMARY KEY,
         method VARCHAR(10) NOT NULL,
         userId INT,
         createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
