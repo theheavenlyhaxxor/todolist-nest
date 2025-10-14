@@ -1,4 +1,4 @@
-// you will notice in here that i did not paste my database keys, i take advantage of the 
+// you will notice in here that i did not paste my database keys, i take advantage of the
 // config file and used it here for more secure of my .env keys
 // i also added here my sql SCHEMA so no need to use the workbench when running this from start
 // it automatically create database tables instead of using mysql workbench
@@ -53,10 +53,34 @@ export class DatabaseService implements OnModuleInit {
       )
     `;
 
+    const createPositionTable = `
+      CREATE TABLE IF NOT EXISTS positions (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        userId INT,
+        position_code VARCHAR(255) NOT NULL,
+        position_name VARCHAR(255) NOT NULL,
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+      )
+    `;
+
+    const createLogsTable = `
+      CREATE TABLE IF NOT EXISTS logs (
+        id INT AUTO INCREMENT PRIMARY KEY,
+        method VARCHAR(10) NOT NULL,
+        userId INT,
+        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (userId) REFERENCES users(id)
+      )
+    `;
+
     try {
       const connection = await this.pool.getConnection();
       await connection.query(createUserTable);
       await connection.query(createTodoTable);
+      await connection.query(createPositionTable);
+      await connection.query(createLogsTable);
       connection.release();
       console.log('✅ Tables ensured');
     } catch (error: any) {

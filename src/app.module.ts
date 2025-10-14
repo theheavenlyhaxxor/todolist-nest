@@ -11,6 +11,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { DatabaseModule } from './database/database.module';
 import { UserModule } from './user/user.module';
 import { PositionModule } from './position/position.module';
+import { LogModule } from './log/log.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { PositionModule } from './position/position.module';
     TaskModule,
     UserModule,
     PositionModule,
+    LogModule,
   ],
   controllers: [],
   providers: [],
