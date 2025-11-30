@@ -4,16 +4,24 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import morgan from 'morgan';
+import * as cors from 'cors';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  app.use(
+    cors({
+      origin: 'https://adet-nextjs-todo.vercel.app',
+      credentials: true,
+    }),
+  );
   app.use(morgan('dev'));
-  app.enableCors({
-    origin: ['http://localhost:3000', 'https://adet-nextjs-todo.vercel.app/'], // exact origins
-    credentials: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
-  });
+  // app.enableCors({
+  //   origin: ['http://localhost:3000', 'https://adet-nextjs-todo.vercel.app/'], // exact origins
+  //   credentials: true,
+  //   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  //   allowedHeaders: 'Content-Type,Authorization',
+  // });
 
   const config = new DocumentBuilder()
     .setTitle('Todo List API')
