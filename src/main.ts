@@ -9,7 +9,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(morgan('dev'));
   app.enableCors({
-    origin: ['http://localhost:3000', 'https://your-production-frontend.com'], // exact origins
+    origin: ['http://localhost:3000', 'https://adet-nextjs-todo.vercel.app/'], // exact origins
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
