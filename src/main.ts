@@ -3,10 +3,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import morgan from 'morgan';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-    app.enableCors({
+  app.use(morgan('dev'));
+  app.enableCors({
     origin: ['http://localhost:3000', 'https://your-production-frontend.com'], // exact origins
     credentials: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -24,14 +26,13 @@ async function bootstrap() {
         scheme: 'bearer',
         bearerFormat: 'JWT',
       },
-      'access-token', 
+      'access-token',
     )
     .build();
 
   const documentFactory = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup('api', app, documentFactory);
-
 
   app.useGlobalPipes(
     new ValidationPipe({
