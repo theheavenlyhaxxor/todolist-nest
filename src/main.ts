@@ -4,17 +4,12 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import morgan from 'morgan';
-import * as cors from 'cors';
+
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
 
-  app.use(
-    cors({
-      origin: 'https://adet-nextjs-todo.vercel.app',
-      credentials: true,
-    }),
-  );
+
   app.use(morgan('dev'));
   // app.enableCors({
   //   origin: ['http://localhost:3000', 'https://adet-nextjs-todo.vercel.app/'], // exact origins
