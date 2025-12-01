@@ -12,6 +12,7 @@ import { DatabaseModule } from './database/database.module';
 import { UserModule } from './user/user.module';
 import { PositionModule } from './position/position.module';
 import { LogModule } from './log/log.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { LogModule } from './log/log.module';
     UserModule,
     PositionModule,
     LogModule,
+    AnalyticsModule,
   ],
   controllers: [],
   providers: [],
